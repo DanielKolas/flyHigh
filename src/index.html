@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Book your flight ticket with flyHigh">
+    <meta name="keywords" content="flyHigh, flights, plane, ticket, travel">
+    <meta name="author" content="Daniel Kolas">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyHigh</title>
+    <link rel="shortcut icon" type="image/jpg" href="./assets/img/favicon.ico" />
+    <!--Font awesome CDN-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER AND NAVIGATION -->
+    <header>
+        <div class="container-nav">
+            <i class="fas fa-bars fa-2x invisible" id="openMobileMenu"></i>
+            <h3 class="invisible" id="logoNameMobile"><a href="#main">FlyHigh</a></h3>
+            <div class="navigation">
+                <h3 class="logoName" id="logo"><a href="#main">FlyHigh</a></h3>
+                <ul class="navigation__menu invisibleMobile">
+                    <li class="navigation__list closeMenuMobile"><a href="#main" class="navigation__list"
+                            id="home">HOME</a></li>
+                    <hr class="mobileLineNav invisible">
+                    <li class="navigation__list closeMenuMobile"><a href="#aboutus" class="navigation__list">ABOUT
+                            us</a></li>
+                    <hr class="mobileLineNav invisible">
+                    <li class="navigation__list closeMenuMobile"><a href="#offers" class="navigation__list">OFFERS</a>
+                    </li>
+                    <hr class="mobileLineNav invisible">
+                    <li class="navigation__list closeMenuMobile"><a href="#faq" class="navigation__list">FAQ</a></li>
+                    <hr class="mobileLineNav invisible">
+                    <li class="navigation__list">
+                        <label class="switch">
+                            <input type="checkbox" id="switchColorMode">
+                            <span class="slider round"></span>
+                        </label>
+                    </li>
+                    <li class="navigation__list">
+                        <div class="navgation__list__dropdown">
+                            <i class="fas fa-user-circle fa-2x resize changeColorHover" id="iconLogin"></i>
+                            <div class="navigation__list__login" id="containerLogin">
+                                <div class="navigation__list__login__item" id="buttonSignIn">Log in</div>
+                                <div class="navigation__list__login__item invisible" id="buttonLogOut">Log out</div>
+                                <div class="navigation__list__login__item" id="buttonSignUp">Sign up</div>
+                            </div>
+                        </div>
+                    </li>
+                    <i class="fas fa-times fa-2x invisible" id="closeMobileMenu"></i>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN SECTION  -->
+    <section class="main" id="main">
+        <div class="container">
+
+            <!-- LOGIN POP-UP-->
+            <div class="container-popup invisible" id="loginPopup">
+                <div class="login">
+                    <i class="fas fa-times fa-2x login__x" id="iconCloseLogin"></i>
+                    <h1 class="login__title">Log in right now!</h1>
+                    <i class="fas fa-user-circle fa-3x"></i>
+                    <form id="formLogin">
+                        <input type="email" name="loginEmail" placeholder="Email address"
+                            class="formBoxes formBoxesPopup">
+                        <br>
+                        <div class="boxPasswordLogin">
+                            <input type="password" name="loginPassword" placeholder="Password"
+                                class="formBoxes formBoxesPopup" id="loginPassword"><i
+                                class="far fa-eye-slash boxPasswordLogin__icon" id="showPassword"></i>
+                        </div>
+                        <div class="login__button">
+                            <p id="errorLogin"></p>
+                            <button type="submit" name="loginButton" class="button">Sign
+                                in</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- REGISTER POP-UP-->
+            <div class="container-popup invisible" id="registerPopup">
+                <div class="register">
+                    <i class="fas fa-times register__x fa-2x" id="iconCloseRegister"></i>
+                    <h1 class="register__title">Create a new account!</h1>
+                    <i class="fas fa-user-circle fa-3x "></i>
+                    <form id="formRegister">
+                        <input type="text" name="registerName" class="formBoxes formBoxesPopup" placeholder="Name"
+                            required>
+                        <br>
+                        <input type="text" name="registerSurname" class="formBoxes formBoxesPopup" placeholder="Surname"
+                            required>
+                        <br>
+                        <input type="email" name="registerEmail" class="formBoxes formBoxesPopup"
+                            placeholder="Email address" required>
+                        <br>
+                        <input type="password" name="registerPassword" class="formBoxes formBoxesPopup"
+                            placeholder="Password" required>
+                        <br>
+                        <input type="password" name="registerPassword2" class="formBoxes formBoxesPopup"
+                            placeholder="Repeat password" required>
+                        <br>
+                        <input type="checkbox" name="registerCheckbox" id="checkboxRegister" required>
+                        <label for="registerCheckbox">I accept the terms of use of flyHigh policy</label>
+                        <div class="register__button">
+                            <p id="errorRegister"></p>
+                            <button type="submit" name="registerButton" class="button">Sign
+                                up!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- MAIN HERO  -->
+            <div id="hero1" class="hero">
+                <div class="hero__first">
+                    <h2 class="hero1Subtitle">It is time for another adventure!</h2>
+                    <div class="hero__first__info">
+                        <i class="far fa-calendar-alt fa-2x"></i>
+                        <p id="currentDate"></p>
+                    </div>
+                    <div class="hero__first__info">
+                        <i class="far fa-clock fa-2x"></i>
+                        <p id="currentTime"></p>
+                    </div>
+                    <div class="hero__first__weather">
+                        <h2 class="hero1Subtitle">The weather outside:</h2>
+                        <div class="hero__first__info">
+                            <i class="fas fa-thermometer-half fa-2x"></i>
+                            <p><span id="weatherDegrees"></span> °C</p>
+                        </div>
+                        <div class="hero__first__info">
+                            <i class="fas fa-cloud-sun fa-2x"></i>
+                            <p id="weatherState"></p>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="hero__second">
+                    <h2 id="welcomeText" class="hero1Subtitle">Buy your flight today!</h2>
+                    <i class="fas fa-plane fa-3x planeIcon"></i>
+                    <div class="hero__second__container__form">
+                        <form id="form1" action="#aboutus">
+                            <div class="form1__container__upper">
+                                <div class="form1__container form__bigger">
+                                    <label for="form1DeparturePlace">Departure place:</label>
+                                    <select name="form1DeparturePlace" required class="formBoxes">
+                                        <option value="JFK-sky" name="New York">New York</option>
+                                        <option value="SFO-sky" name="San Fransicso">San Fransicso</option>
+                                    </select>
+                                </div>
+                                <div class="form1__container form__bigger">
+                                    <label for="form1ArrivalPlace">Arrival place:</label>
+                                    <select name="form1ArrivalPlace" required class="formBoxes">
+                                        <option value="JFK-sky">New York</option>
+                                        <option value="SFO-sky">San Fransicso</option>
+                                        <option value="LIS-sky">Lisbon</option>
+                                        <option value="BCN-sky">Barcelona</option>
+                                        <option value="CUN-sky">Ottawa</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form1__container__lower">
+                                <div class="form1__container">
+                                    <label for="form1DepartureDate">Departure date:</label>
+                                    <input name="form1DepartureDate" type="date" required class="formBoxes">
+                                </div>
+                                <div class="form1__container">
+                                    <label for="form1ArrivalDate">Arrival date:</label>
+                                    <input name="form1ArrivalDate" type="date" required class="formBoxes">
+                                </div>
+                                <div class="form1__container">
+                                    <label for="form1Number">Passengers no.</label>
+                                    <input name="form1Number" type="number" required class="formBoxes">
+                                </div>
+                                <div class="form1__container">
+                                    <label for="form1Class">Class:</label>
+                                    <select name="form1Class" required class="formBoxes">
+                                        <option value="Normal">Normal</option>
+                                        <option value="Premium">Premium</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <p id="errorForm1"></p>
+                            <button type="submit" class="button smallMargin">NEXT</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING PLACES  -->
+    <section id="hero2" class="invisible">
+        <div class="container">
+            <div class="hero2">
+                <form id="form2">
+                    <div class="form2__container">
+                        <h1 class="titleSection">Details of your flight</h1>
+                        <h2 class="subtitleSecion">Please select below, if you want any type of additional luggage:
+                        </h2>
+                        <input type="checkbox" name="smallLuggage" value="Small Luggage" id="smallLuggage">
+                        <label for="smallLuggage" class="labelBig">Small luggage</label>
+                        <br>
+                        <input type="checkbox" name="bigLuggage" value="Big Luggage" id="bigLuggage">
+                        <label for="bigLuggage" class="labelBig">Big luggage</label>
+                    </div>
+                    <h2 class="subtitleSecion upperMarginSmall">Please select the desired seat</h2>
+                    <ul class=seat__label>
+                        <li class=seat__label__item>
+                            <div class="seatLabel"></div>
+                            <small>Available</small>
+                        </li>
+                        <li class=seat__label__item>
+                            <div class="seatLabel seat__taken__example"></div>
+                            <small>Sold</small>
+                        </li>
+                        <li class=seat__label__item>
+                            <div class="seatLabel seat__selected__example"></div>
+                            <small>Selected</small>
+                        </li>
+                    </ul>
+                    <p>FRONT</p>
+
+                    <!-- SMALL PLANE -->
+                    <div class="join__container invisible" id="smallPlane">
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat seat__taken"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MEDIUM PLANE  -->
+                    <div class="join__container invisible" id="middlePlane">
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LARGE PLANE  -->
+                    <div class="join__container invisible  overflowX" id="bigPlane">
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                        <div class="seats">
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                            <div class="seats__row">
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                                <div class="seat"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="errorSeats"></p>
+                    <div class="join__container">
+                        <button id="seatLogin" class="buttonSmall invisible space__between">LOG IN</button>
+                        <button id="seatRegister" class="buttonSmall invisible">REGISTER</button>
+                    </div>
+                    <button type="submit" id="form2_button" class="button">CONFIRM</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO 3 -->
+    <section id="hero3" class="invisible">
+        <div class="container">
+            <div class="hero3">
+                <h1 class="titleSection">SUMMARY</h1>
+                <h2 class="subtitleSecion">Personal data</h2>
+                <p class="summaryText">NAME: <span id="summaryName"></span></p>
+                <p class="summaryText">SURNAME: <span id="summarySurname"></span></p>
+                <p class="summaryText">EMAIL ADDRESS: <span id="summaryEmail"></span></p>
+                <hr class="hrSummary">
+                <h2 class="subtitleSecion">Flight details</h2>
+                <p class="summaryText">DATE: <span id="summaryDate"></span></p>
+                <p class="summaryText">DEPARTURE PLACE: <span id="summaryDeparture"></span></p>
+                <p class="summaryText">ARRIVAL PLACE: <span id="summaryArrival"></span></p>
+                <p class="summaryText">SEATS: <span id="summarySeats"></span></p>
+                <p class="summaryText">CLASS: <span id="summaryClass"></span></p>
+                <p class="summaryText">LUGGAGE: <span id="summaryLuggage"></span></p>
+                <hr class="hrSummary">
+                <h2 class="subtitleSecion">Payment</h2>
+                <div class="join__container">
+                    <p id="finalPrice" class="space__between"></p>
+                    <p id="finalPriceEUR" class=invisible></p>
+                    <form id="form3">
+                        <select name="summaryCurrency" id="form3Currency"
+                            class="space__between formBoxes formBoxesSmall" required>
+                            <option value="EUR" selected="selected">EUR</option>
+                            <option value="USD">USD</option>
+                            <option value="NOK">NOK</option>
+                            <option value="PLN">PLN</option>
+                        </select>
+                        <button id="buttonCurrency" class="buttonSmall">Calculate price</button>
+                    </form>
+                </div>
+                <hr class="hrSummary">
+                <div id="summaryWeather" class="invisible">
+                    <h2 class="subtitleSecion">Weather forecast at arrival</h2>
+                    <p class="summaryText">Minimal temperature: <span id="summaryTemperatureMin"></span> °C</p>
+                    <p class="summaryText">Maximal temperature: <span id="summaryTemperatureMax"></span> °C</p>
+                    <p class="summaryText">Pressure: <span id="summaryPressure"></span> hPa</p>
+                    <p class="summaryText">Description: <span id="summaryDescription"></span></p>
+                    <hr class="hrSummary">
+                </div>
+                <h2 class="subtitleSecion">Thank you for boking a flight with us, we will send the boarding pass to your
+                    email shortly!</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="aboutus" id="aboutus">
+        <div class="container">
+            <div class="about">
+                <div class="about__left">
+                    <h1 class="titleSection">With us, you can fly high!</h1>
+                    <p>Our company was founded in 1996, and since that, we are a leading company offering flights around
+                        the whole world! Even though at the very beginning our focus lied on providing short-range
+                        flights across Europe, but with time, we expanded our offer and currently, there is not a single
+                        airport on this planet unavailable for us.</p>
+                    <br>
+                    <p>Since 2012, we are happy to be the proud Hights award holder, confirming that we do not care only
+                        about the quantity, but also quality. We do our best to provide the best experience to our
+                        customers, as we want them to remember time spent with us as pleasant and unique. That is the
+                        reason why all of our clients obtain free meals, blankets and cups of warm tea. Your smile is
+                        our most important prize we can get.</p>
+                </div>
+                <div class="about__right">
+                    <div id="aboutPlaneIcon" class="iconInfinite"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFERS  -->
+    <section class="offers" id="offers">
+        <div class="container">
+            <div class="offer">
+                <h1 class="titleSection">Don't wait, win a free flight!</h1>
+                <div class="offer__container__main">
+                    <div class="offer__container">
+                        <div class="offer__container__item">
+                            <div class="sliderPhotos"></div>
+                        </div>
+                        <div class="offer__container__item offer__container__item__text">
+                            <p>To take part in our competition, you should send us your photos from your favourite place
+                                you have visited so far and write a small description of why it is important to you. When
+                                the deadline comes (06/13/2021), the jury will select the best stories/photos and your
+                                history will be published on our website. <strong>The winners</strong> will recieve
+                                <strong>vouchers</strong> for a free trip across Europe. Isn't that amazing?</p>
+                            <br>
+                            <p>Everybody can take part! The only regulation is that you have to be at least 16 y/o to
+                                participate. Share with us your story and fulfill your dreams! Send an email to us by
+                                clicking here:</p>
+                            <br>
+                            <span><button class="button"><a href="mailto:daniel.piotr.kolas@gmail" class="aMailTo">CLICK
+                                        HERE</a></button></span>
+                            <br>
+                            <p>and we will contact you back! Do not waste your opportunity for the best trip in our
+                                life! We can't wait to get in touch with you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ  -->
+    <section class="faquestions" id="faq">
+        <div class="container">
+            <h1 class="faqTitle titleSection">FAQ - Frequenty Asked Questions</h1>
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>Can I take any
+                    animals on a plane with me? <span><i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">RyanAir does not permit any type of live animal to fly in the cabin of
+                    its aircraft unless it is a guide or assistance dog trained to perform tasks for the benefit of an
+                    individual with a disability (physical, sensory or psychiatric) and must be certified by an
+                    organisation that is a full member of Assistance Dogs International (ADI), Assistance Dogs UK or
+                    International Guide Dog Federation (IGDF). Ryan Air does not recognize emotional support or therapy
+                    dogs.</p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>How can I cancel the
+                    reservation? Can I get a refund? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">If your flight is cancelled there are two options available to you to
+                    choose from. You can either apply for a refund or change your cancelled flight for free. If you wish
+                    to claim a full refund for the cancelled flight, click on the link below, log into your flyHigh
+                    account and follow the steps for a refund.</p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>What to do if my
+                    baggage is lost/damaged during the flight? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">If your bag is lost, delayed or damaged you will need report it at your
+                    arrival airport and submit a claim. The reporting of damage, delay or loss of checked baggage at
+                    your arrival airport does not constitute a baggage claim.</p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>How can I pay for my
+                    flights? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">There are loads of ways to pay for your Ryanair flights. We accept
+                    PayPal, UATP, American Express cards, Visa, Mastercard, Diners/Discover, Apple Visa and Apple
+                    Mastercard credit cards and the following debit cards Visa Connect, Visa Electron, Mastercard
+                    Prepaid, Visa Delta.
+                </p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>Can I book a flight
+                    for the next year? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">Ryanair’s flight schedules are released five to six months in advance of
+                    operation. Once the flights appear online you can get in early and book your trip here. If the
+                    flights you are looking for are not available online, then Ryanair either do not fly the route you
+                    are requesting on this day or it has not been made available yet.
+                </p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>What can I do if my
+                    passport/travel document is lost or stolen while I am abroad? <i
+                        class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">Your passport is an important document and should always be kept safe
+                    however if your passport is lost or stolen abroad there are some things you can do to make the
+                    situation easier to resolve. Make a police report. Firstly, you will need go to the nearest police
+                    station and report your travel document lost/stolen. Your embassy/consulate will not issue a
+                    replacement travel document without a police report.
+                </p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>Can I bring infant
+                    equipment with myself on a plane? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">Yes you can bring any infant equipment you need. You can carry 2 items of
+                    baby equipment free of charge per child - 1 pushchair plus one of the following items: car seat or
+                    booster seat or travelcot. On arrival at the airport the 2 free items of baby equipment can be
+                    tagged for travel at a Bag Drop Desk, which close 40 minutes before the scheduled flight departure
+                    time
+                </p>
+            </div>
+            <hr class="hr">
+            <div class="faq">
+                <h2 class="faq__question"><span><i class="far fa-question-circle"></i></span>How can I receive my
+                    mobile boarding pass? <i class="fas fa-chevron-down arrowDown"></i></span></h2>
+                <p class="faq__answer openFAQ">Once you have successfully checked-in for your flight using the Ryanair
+                    app, the mobile boarding pass will automatically be saved onto the phone. You can view your mobile
+                    boarding pass via the Ryanair app by selecting ‘Boarding Pass’ from the app home screen
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER  -->
+    <footer>
+        <div class="container">
+            <div class="backTop">
+                <a href="#main"><i class="fas fa-chevron-up"></i></a>
+            </div>
+            <div class="footer">
+                <div class="footer__top">
+                    <p>FOLLOW ALONG</p>
+                    <div class="footer__top__icons">
+                        <a href="https://www.facebook.com/daniel.kolas.3/" target="_blank"><i
+                                class="fab fa-facebook-square fa-2x resize changeColorHover"></i></a>
+                        <a href="https://www.instagram.com/daniel.kolas/" target="_blank"><i
+                                class="fab fa-instagram fa-2x resize changeColorHover"></i></a>
+                        <a href="mailto:daniel.piotr.kolas@gmail.com" target="_blank"><i
+                                class="fas fa-envelope fa-2x resize changeColorHover"></i></a>
+                        <a href="https://www.linkedin.com/in/daniel-kolas-8b659b141/" target="_blank"><i
+                                class="fab fa-linkedin fa-2x resize changeColorHover"></i></a>
+                    </div>
+                </div>
+                <div class="footer__middle">
+                    <div class="footer__middle__info">
+                        <ul>
+                            <li class="footer__middle__info__title">For clients</li>
+                            <li>Payment</li>
+                            <li>Special offers</li>
+                            <li>Customer service</li>
+                            <li>Photo competition</li>
+                        </ul>
+                    </div>
+                    <div class="footer__middle__info">
+                        <ul>
+                            <li class="footer__middle__info__title">Company data</li>
+                            <li>Privicy policy</li>
+                            <li>History of company</li>
+                            <li>Regulations</li>
+                            <li>Why us?</li>
+                            <li>Blog</li>
+                        </ul>
+                    </div>
+                    <div class="footer__middle__info">
+                        <ul>
+                            <li class="footer__middle__info__title">Our flights</li>
+                            <li>Schedule</li>
+                            <li>Connection map</li>
+                            <li>Terms of use</li>
+                        </ul>
+                    </div>
+                    <div class="footer__middle__info">
+                        <ul>
+                            <li class="footer__middle__info__title">Partners</li>
+                            <li>Meet our partners</li>
+                            <li>Work with us</li>
+                            <li>Travel market</li>
+                            <li>Interface API</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <p>©Copyright Daniel Kolas 2021, unless otherwise noted.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[
+    {
+        "name":"Daniel",
+        "surname":"Kolas",
+        "email":"daniel.piotr.kolas@gmail.com",
+        "password":"ziemniaki1"
+    },
+    {
+        "name":"Test",
+        "surname":"Test",
+        "email":"Test@gmail.com",
+        "password":"test"
+    }
+]

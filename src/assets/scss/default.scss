@@ -1,0 +1,69 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColorLight:#{$primaryLight};
+    --primaryColorDark:#{$primaryDark};
+    --primaryColorAdd:#{$primaryAdd};
+    --primaryColorRed:#{$primaryRed};
+    --primaryColorGreen:#{$primaryGreen};
+}
+
+.changeColorMode {
+    --primaryColorLight:#{$primaryLight2};
+    --primaryColorDark:#{$primaryDark2};
+    --primaryColorAdd:#{$primaryAdd2};
+    --primaryColorRed:#{$primaryRed2};
+    --primaryColorGreen:#{$primaryGreen2};
+}
+
+html {
+    font-family: $font-main;
+    color: var(--primaryColorLight);
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+section {
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li,
+i {
+    color: var(--primaryColorLight);
+} 
